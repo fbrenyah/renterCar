@@ -18,30 +18,36 @@ import java.text.DecimalFormat;
 public class Java_Final_Project extends Applet implements ActionListener
 {
     //declare variables
-    int temp1=0,//for compacts
-        temp2=0,//for intermediates
-        temp3=0,//for fullsized
-        n;//number of days variable
+    int temp1=0, //for compacts
+        temp2=0, //for intermediates
+        temp3=0, //for fullsized
+        n;       //number of days variable
         
-    boolean reserveONE=false,
-            reserveTWO=false,
-            reserveTHREE=false;
+    boolean reserveONE = false,
+            reserveTWO = false,
+            reserveTHREE = false;
+            
     double totalBill, cost1=29.95, cost2=39.95, cost3=59.95;;
+    
     String CAR, carMOD;
-    Image   compImg[]=new Image[6],
-            interImg[]=new Image[5],
-            fullImg[]=new Image[6];
+    
+    Image   compImg[] = new Image[6],
+            interImg[] = new Image[5],
+            fullImg[] = new Image[6];
+            
     String compactPic[] = {"Hyundai-Accent.JPG",
                            "Ford-Focus.JPG",
                            "ford-max.PNG",
                            "Toyota-Yaris.JPG",
                            "Honda-Civic.JPG",
                            "Scion-XD.PNG"};
+                           
     String interPic[] = {"Chevrolet-Cruze.JPG",
                          "Mitsubishi-Lancer.JPG",
                          "Dodge-Dart.JPG",
                          "BMW-M3.JPG",
                          "Volvo-S60.JPG"};
+                         
     String fullPic[] = {"Nissan-Altima.JPG",
                         "Chrysler-300.JPG",
                         "Ford-Taurus.JPG",
@@ -57,7 +63,9 @@ public class Java_Final_Project extends Applet implements ActionListener
             fullsizeLabel = new Label("Full Size (Toyota Camry or similar). $59.95/day"),
             carSelectedLabel = new Label("Car Selected"),
             numDays = new Label("Select the number of days");
+            
     TextArea txtReport = new TextArea();
+    
     Button btnNext1 = new Button("Next Car >>"),
            btnNext2 = new Button("Next Car >>"),
            btnNext3 = new Button("Next Car >>"),
@@ -65,17 +73,21 @@ public class Java_Final_Project extends Applet implements ActionListener
            btnRent2 = new Button("Rent Car!"),
            btnRent3 = new Button("Rent Car!"),
            btnReport = new Button("Checkout");
+           
     Choice daysDropBox = new Choice();
+    
     Font    bannerFont = new Font("Arial", Font.ITALIC+Font.BOLD, 28),
             carTypeFont = new Font("Arial", Font.BOLD, 13);
+            
     DecimalFormat df = new DecimalFormat("0.00");
     
-    public void init()
-    {
-        resize(710,650);//set initial applet size
-        setBackground(Color.BLACK);//set iintial applet background
-        //add components to applet
+    public void init() {
+        // set initial applet size
+        resize(710,650);
+        // set initial applet background color
+        setBackground(Color.BLACK);
         setLayout(null);
+        
         //applet labels
         compBanner.setLocation(200,15);
         compBanner.setSize(290,30);
@@ -178,8 +190,9 @@ public class Java_Final_Project extends Applet implements ActionListener
         for(int temp3=0; temp3<6; temp3++)
             fullImg[temp3] = this.getImage(this.getCodeBase(),fullPic[temp3]);       
     }
-    public void paint(Graphics g)
-    {   g.setColor(Color.WHITE);
+    public void paint(Graphics g) {
+     
+     g.setColor(Color.WHITE);
     
         repaint();
         //applet borders
