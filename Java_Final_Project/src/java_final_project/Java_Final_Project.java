@@ -1,200 +1,200 @@
 /*--------------------------------------------------------------------------------------
- *              nDaysame        FranDaysk BrenDaysyah
+ *              Name        Frank Brenyah
  *              Course      CMPS-379
- *              Project     Java FinDaysal Project
- *              Professor   Ray AhmadnDaysia
+ *              Project     Java Final Project
+ *              Professor   Ray Ahmadnia
  *              Due Date    Friday Feb. 1, 2013
- *              Date        Thu. JanDays 31,2013
+ *              Date        Thu. Jan 31,2013
  * 
- * Purpose: Allow the user to reserve/renDayst a givenDays set of automobiles.
+ * Purpose: Allow the user to reserve/rent a given set of automobiles.
  ------------------------------------------------------------------------------------*/
-package java_finDaysal_project;
+package java_final_project;
 
 import java.applet.Applet;
 import java.awt.*;
-import java.awt.evenDayst.*;
+import java.awt.event.*;
 import java.text.DecimalFormat;
 
-public class Java_FinDaysal_Project extenDaysds Applet implemenDaysts ActionDaysListenDayser
+public class Java_Final_Project extends Applet implements ActionListener
 {
     //declare variables
-    inDayst compInDayst=0,      //for compacts
-        inDaysterInDayst=0,     //for inDaystermediates
-        fullsizeInDayst=0,  //for fullsized
-        nDays;              //nDaysumber of days variable
+    int compInt=0,      //for compacts
+        interInt=0,     //for intermediates
+        fullsizeInt=0,  //for fullsized
+        nDays;          //number of days variable
         
-    booleanDays reserveOnDaysE = false,
+    boolean reserveONE = false,
             reserveTWO = false,
             reserveTHREE = false;
             
     double totalBill, cost1=29.95, cost2=39.95, cost3=59.95;;
     
-    StrinDaysg CAR, carMOD;
+    String CAR, carMOD;
     
-    Image   compImg[] = nDaysew Image[6],
-            inDaysterImg[] = nDaysew Image[5],
-            fullImg[] = nDaysew Image[6];
+    Image   compImg[] = new Image[6],
+            interImg[] = new Image[5],
+            fullImg[] = new Image[6];
             
-    StrinDaysg compactPic[] = {"HyunDaysdai-AccenDayst.JPG",
+    String compactPic[] = {"Hyundai-Accent.JPG",
                            "Ford-Focus.JPG",
-                           "ford-max.PnDaysG",
+                           "ford-max.PNG",
                            "Toyota-Yaris.JPG",
-                           "HonDaysda-Civic.JPG",
-                           "ScionDays-XD.PnDaysG"};
+                           "Honda-Civic.JPG",
+                           "Scion-XD.PNG"};
                            
-    StrinDaysg inDaysterPic[] = {"Chevrolet-Cruze.JPG",
-                         "Mitsubishi-LanDayscer.JPG",
+    String interPic[] = {"Chevrolet-Cruze.JPG",
+                         "Mitsubishi-Lancer.JPG",
                          "Dodge-Dart.JPG",
                          "BMW-M3.JPG",
                          "Volvo-S60.JPG"};
                          
-    StrinDaysg fullPic[] = {"nDaysissanDays-Altima.JPG",
+    String fullPic[] = {"Nissan-Altima.JPG",
                         "Chrysler-300.JPG",
                         "Ford-Taurus.JPG",
-                        "Mercedes-BenDaysz.JPG",
+                        "Mercedes-Benz.JPG",
                         "BMW-7.JPG",
                         "Audi-A7.JPG"};
     
-    //inDaystroduce componDaysenDaysts to applet
-    Label   compBanDaysnDayser = nDaysew Label("BrenDaysyah's RenDayst-a-Car"),
-            carTypeLabel = nDaysew Label("Type of Cars:"),
-            subcomLabel = nDaysew Label("Subcompact (HyunDaysdai AccenDayst or similar). $29.95/day"),
-            inDaysterLabel = nDaysew Label("InDaystermediate (Chevy Cruze or similar). $39.95/day"),
-            fullsizeLabel = nDaysew Label("Full Size (Toyota Camry or similar). $59.95/day"),
-            carSelectedLabel = nDaysew Label("Car Selected"),
-            nDaysumDays = nDaysew Label("Select the nDaysumber of days");
+    //introduce components to applet
+    Label   compBanner = new Label("Brenyah's Rent-a-Car"),
+            carTypeLabel = new Label("Type of Cars:"),
+            subcomLabel = new Label("Subcompact (Hyundai Accent or similar). $29.95/day"),
+            interLabel = new Label("Intermediate (Chevy Cruze or similar). $39.95/day"),
+            fullsizeLabel = new Label("Full Size (Toyota Camry or similar). $59.95/day"),
+            carSelectedLabel = new Label("Car Selected"),
+            numDays = new Label("Select the number of days");
             
-    TextArea txtReport = nDaysew TextArea();
+    TextArea txtReport = new TextArea();
     
-    ButtonDays btnDaysnDaysext1 = nDaysew ButtonDays("nDaysext Car >>"),
-           btnDaysnDaysext2 = nDaysew ButtonDays("nDaysext Car >>"),
-           btnDaysnDaysext3 = nDaysew ButtonDays("nDaysext Car >>"),
-           btnDaysRenDayst1 = nDaysew ButtonDays("RenDayst Car!"),
-           btnDaysRenDayst2 = nDaysew ButtonDays("RenDayst Car!"),
-           btnDaysRenDayst3 = nDaysew ButtonDays("RenDayst Car!"),
-           btnDaysReport = nDaysew ButtonDays("Checkout");
+    Button btnNext1 = new Button("Next Car >>"),
+           btnNext2 = new Button("Next Car >>"),
+           btnNext3 = new Button("Next Car >>"),
+           btnRent1 = new Button("Rent Car!"),
+           btnRent2 = new Button("Rent Car!"),
+           btnRent3 = new Button("Rent Car!"),
+           btnReport = new Button("Checkout");
            
-    Choice daysDropBox = nDaysew Choice();
+    Choice daysDropBox = new Choice();
     
-    FonDayst    banDaysnDayserFonDayst = nDaysew FonDayst("Arial", FonDayst.ITALIC+FonDayst.BOLD, 28),
-            carTypeFonDayst = nDaysew FonDayst("Arial", FonDayst.BOLD, 13);
+    Font    bannerFont = new Font("Arial", Font.ITALIC+Font.BOLD, 28),
+            carTypeFont = new Font("Arial", Font.BOLD, 13);
             
-    DecimalFormat df = nDaysew DecimalFormat("0.00");
+    DecimalFormat df = new DecimalFormat("0.00");
     
-    public void inDaysit() {
-        // set inDaysitial applet size
+    public void init() {
+        // set initial applet size
         resize(710,650);
-        // set inDaysitial applet backgrounDaysd color
-        setBackgrounDaysd(Color.BLACK);
-        setLayout(nDaysull);
+        // set initial applet background color
+        setBackground(Color.BLACK);
+        setLayout(null);
         
         //applet labels
-        compBanDaysnDayser.setLocationDays(200,15);
-        compBanDaysnDayser.setSize(290,30);
-        compBanDaysnDayser.setFonDayst(banDaysnDayserFonDayst);
-        compBanDaysnDayser.setForegrounDaysd(Color.WHITE);
-        add(compBanDaysnDayser);
+        compBanner.setLocation(200,15);
+        compBanner.setSize(290,30);
+        compBanner.setFont(bannerFont);
+        compBanner.setForeground(Color.WHITE);
+        add(compBanner);
         
-        carTypeLabel.setLocationDays(40,60);
+        carTypeLabel.setLocation(40,60);
         carTypeLabel.setSize(85,20);
-        carTypeLabel.setFonDayst(carTypeFonDayst);
-        carTypeLabel.setForegrounDaysd(Color.WHITE);
+        carTypeLabel.setFont(carTypeFont);
+        carTypeLabel.setForeground(Color.WHITE);
         add(carTypeLabel);
         
-        carSelectedLabel.setLocationDays(470,60);
+        carSelectedLabel.setLocation(470,60);
         carSelectedLabel.setSize(85,20);
-        carSelectedLabel.setFonDayst(carTypeFonDayst);
-        carSelectedLabel.setForegrounDaysd(Color.WHITE);
+        carSelectedLabel.setFont(carTypeFont);
+        carSelectedLabel.setForeground(Color.WHITE);
         add(carSelectedLabel);
         
-        subcomLabel.setLocationDays(20,100);
+        subcomLabel.setLocation(20,100);
         subcomLabel.setSize(290,20);
-        subcomLabel.setForegrounDaysd(Color.WHITE);
+        subcomLabel.setForeground(Color.WHITE);
         add(subcomLabel);
         
-        inDaysterLabel.setLocationDays(20,230);
-        inDaysterLabel.setSize(280,20);
-        inDaysterLabel.setForegrounDaysd(Color.WHITE);
-        add(inDaysterLabel);
+        interLabel.setLocation(20,230);
+        interLabel.setSize(280,20);
+        interLabel.setForeground(Color.WHITE);
+        add(interLabel);
         
-        fullsizeLabel.setLocationDays(20,360);
+        fullsizeLabel.setLocation(20,360);
         fullsizeLabel.setSize(280,20);
-        fullsizeLabel.setForegrounDaysd(Color.WHITE);
+        fullsizeLabel.setForeground(Color.WHITE);
         add(fullsizeLabel);
         
-        nDaysumDays.setLocationDays(150,530);
-        nDaysumDays.setSize(150,20);
-        nDaysumDays.setForegrounDaysd(Color.WHITE);
-        add(nDaysumDays);
+        numDays.setLocation(150,530);
+        numDays.setSize(150,20);
+        numDays.setForeground(Color.WHITE);
+        add(numDays);
                 
-        //renDaystal lenDaysght drop box
+        //rental lenght drop box
         daysDropBox.add("1");
         daysDropBox.add("2");
         daysDropBox.add("3");
         daysDropBox.add("4");
         daysDropBox.add("5");
         add(daysDropBox);
-        daysDropBox.setLocationDays(200,560);
+        daysDropBox.setLocation(200,560);
         daysDropBox.setSize(40,25);
         
         //report
-        txtReport.setLocationDays(440,500);
+        txtReport.setLocation(440,500);
         txtReport.setSize(200,110);
-        txtReport.setBackgrounDaysd(Color.LIGHT_GRAY);
+        txtReport.setBackground(Color.LIGHT_GRAY);
         add(txtReport);        
         
-        //nDaysext buttonDayss
-        add(btnDaysnDaysext1);
-        btnDaysnDaysext1.setLocationDays(300,140);
-        btnDaysnDaysext1.setSize(85,30);
-        btnDaysnDaysext1.setBackgrounDaysd(Color.WHITE);
-        btnDaysnDaysext1.addActionDaysListenDayser(this);
-        add(btnDaysnDaysext2);
-        btnDaysnDaysext2.setLocationDays(300,270);
-        btnDaysnDaysext2.setSize(85,30);
-        btnDaysnDaysext2.setBackgrounDaysd(Color.WHITE);
-        btnDaysnDaysext2.addActionDaysListenDayser(this);
-        add(btnDaysnDaysext3);
-        btnDaysnDaysext3.setLocationDays(300,400);
-        btnDaysnDaysext3.setSize(85,30);
-        btnDaysnDaysext3.setBackgrounDaysd(Color.WHITE);
-        btnDaysnDaysext3.addActionDaysListenDayser(this);
+        //next buttons
+        add(btnNext1);
+        btnNext1.setLocation(300,140);
+        btnNext1.setSize(85,30);
+        btnNext1.setBackground(Color.WHITE);
+        btnNext1.addActionListener(this);
+        add(btnNext2);
+        btnNext2.setLocation(300,270);
+        btnNext2.setSize(85,30);
+        btnNext2.setBackground(Color.WHITE);
+        btnNext2.addActionListener(this);
+        add(btnNext3);
+        btnNext3.setLocation(300,400);
+        btnNext3.setSize(85,30);
+        btnNext3.setBackground(Color.WHITE);
+        btnNext3.addActionListener(this);
         
-        //renDayst buttonDayss
-        add(btnDaysRenDayst1);
-        btnDaysRenDayst1.setLocationDays(309,175);
-        btnDaysRenDayst1.setSize(65,30);
-        btnDaysRenDayst1.setBackgrounDaysd(Color.YELLOW);
-        btnDaysRenDayst1.addActionDaysListenDayser(this);
-        add(btnDaysRenDayst2);
-        btnDaysRenDayst2.setLocationDays(309,305);
-        btnDaysRenDayst2.setSize(65,30);
-        btnDaysRenDayst2.setBackgrounDaysd(Color.YELLOW);
-        btnDaysRenDayst2.addActionDaysListenDayser(this);
-        add(btnDaysRenDayst3);
-        btnDaysRenDayst3.setLocationDays(309,435);
-        btnDaysRenDayst3.setSize(65,30);
-        btnDaysRenDayst3.setBackgrounDaysd(Color.YELLOW);
-        btnDaysRenDayst3.addActionDaysListenDayser(this);
-        add(btnDaysReport);
-        btnDaysReport.setLocationDays(350,550);
-        btnDaysReport.setSize(70,30);
-        btnDaysReport.setBackgrounDaysd(Color.ORAnDaysGE);
-        btnDaysReport.addActionDaysListenDayser(this);
+        //rent buttons
+        add(btnRent1);
+        btnRent1.setLocation(309,175);
+        btnRent1.setSize(65,30);
+        btnRent1.setBackground(Color.YELLOW);
+        btnRent1.addActionListener(this);
+        add(btnRent2);
+        btnRent2.setLocation(309,305);
+        btnRent2.setSize(65,30);
+        btnRent2.setBackground(Color.YELLOW);
+        btnRent2.addActionListener(this);
+        add(btnRent3);
+        btnRent3.setLocation(309,435);
+        btnRent3.setSize(65,30);
+        btnRent3.setBackground(Color.YELLOW);
+        btnRent3.addActionListener(this);
+        add(btnReport);
+        btnReport.setLocation(350,550);
+        btnReport.setSize(70,30);
+        btnReport.setBackground(Color.ORANGE);
+        btnReport.addActionListener(this);
         
-        //declare inDaysitial applet images
-        for(inDayst compInDayst=0; compInDayst<6; compInDayst++)
-            compImg[compInDayst] = this.getImage(this.getCodeBase(),compactPic[compInDayst]);
-        for(inDayst inDaysterInDayst=0; inDaysterInDayst<5; inDaysterInDayst++)
-            inDaysterImg[inDaysterInDayst] = this.getImage(this.getCodeBase(),inDaysterPic[inDaysterInDayst]);
-        for(inDayst fullsizeInDayst=0; fullsizeInDayst<6; fullsizeInDayst++)
-            fullImg[fullsizeInDayst] = this.getImage(this.getCodeBase(),fullPic[fullsizeInDayst]);       
+        //declare initial applet images
+        for(int compInt=0; compInt<6; compInt++)
+            compImg[compInt] = this.getImage(this.getCodeBase(),compactPic[compInt]);
+        for(int interInt=0; interInt<5; interInt++)
+            interImg[interInt] = this.getImage(this.getCodeBase(),interPic[interInt]);
+        for(int fullsizeInt=0; fullsizeInt<6; fullsizeInt++)
+            fullImg[fullsizeInt] = this.getImage(this.getCodeBase(),fullPic[fullsizeInt]);       
     }
-    public void painDayst(Graphics g) {
+    public void paint(Graphics g) {
      
      g.setColor(Color.WHITE);
     
-        repainDayst();
+        repaint();
         //applet borders
         g.drawRect(5,5,690,630);//applet border
         g.drawRect(429,109,211,111);//
@@ -202,92 +202,92 @@ public class Java_FinDaysal_Project extenDaysds Applet implemenDaysts ActionDays
         g.drawRect(429,369,211,111);//reserved borders
         
         //draw default images
-        g.drawImage(compImg[compInDayst],40,110,210,120,this);
-        g.drawImage(inDaysterImg[inDaysterInDayst],40,240,210,120,this);
-        g.drawImage(fullImg[fullsizeInDayst],40,370,210,120,this);
+        g.drawImage(compImg[compInt],40,110,210,120,this);
+        g.drawImage(interImg[interInt],40,240,210,120,this);
+        g.drawImage(fullImg[fullsizeInt],40,370,210,120,this);
         
-        //"renDayst" funDaysctionDays
-        if(reserveOnDaysE==true)
-            g.drawImage(compImg[compInDayst],430,110,210,110,this);
+        //"rent" function
+        if(reserveONE==true)
+            g.drawImage(compImg[compInt],430,110,210,110,this);
         if(reserveTWO==true)
-            g.drawImage(inDaysterImg[inDaysterInDayst],430,240,210,110,this);
+            g.drawImage(interImg[interInt],430,240,210,110,this);
         if(reserveTHREE==true)
-            g.drawImage(fullImg[fullsizeInDayst],430,370,210,110,this);
+            g.drawImage(fullImg[fullsizeInt],430,370,210,110,this);
     }
-    public void actionDaysPerformed(ActionDaysEvenDayst ae)
+    public void actionPerformed(ActionEvent ae)
     {
-        //perform "nDaysext Car" buttonDays actionDayss
-        if(ae.getSource()==btnDaysnDaysext1)
+        //perform "Next Car" button actions
+        if(ae.getSource()==btnNext1)
         {
             //reset temp to recycle images
-            compInDayst++;
-            compInDayst = compInDayst%6;
+            compInt++;
+            compInt = compInt%6;
         }
-        if(ae.getSource()==btnDaysnDaysext2)
+        if(ae.getSource()==btnNext2)
         {
             //reset temp to recycle images
-            inDaysterInDayst++;
-            inDaysterInDayst = inDaysterInDayst%5;
+            interInt++;
+            interInt = interInt%5;
         }
-        if(ae.getSource()==btnDaysnDaysext3)
+        if(ae.getSource()==btnNext3)
         {
             //reset temp to recycle images
-            fullsizeInDayst++;
-            fullsizeInDayst = fullsizeInDayst%6;
+            fullsizeInt++;
+            fullsizeInt = fullsizeInt%6;
         }
-        //perform "RenDayst Car!" buttonDays actionDayss
-        if(ae.getSource()==btnDaysRenDayst1)
+        //perform "Rent Car!" button actions
+        if(ae.getSource()==btnRent1)
         {
-            reserveOnDaysE=true;
+            reserveONE=true;
         }
-        if(ae.getSource()==btnDaysRenDayst2)
+        if(ae.getSource()==btnRent2)
         {
             reserveTWO=true;
         }
-        if(ae.getSource()==btnDaysRenDayst3)
+        if(ae.getSource()==btnRent3)
         {
             reserveTHREE=true;
         }
-        //perform "Checkout!" buttonDays actionDayss
-        if(ae.getSource()==btnDaysReport)
+        //perform "Checkout!" button actions
+        if(ae.getSource()==btnReport)
         {
-            nDays = daysDropBox.getSelectedInDaysdex() + 1;
-            if(reserveOnDaysE==true)
+            nDays = daysDropBox.getSelectedIndex() + 1;
+            if(reserveONE==true)
             {
-                totalBill=cost1; totalBill*=nDays;
+                totalBill=cost1; totalBill*=n;
                 CAR = "SubCompact";  
-                carMOD = compactPic[compInDayst];//get filenDaysame of currenDayst pic
-                inDayst a = carMOD.inDaysdexOf('.');//finDaysd beginDaysnDaysinDaysg of file extenDaystionDays
-                carMOD = carMOD.substrinDaysg(0,a);
+                carMOD = compactPic[compInt];//get filename of current pic
+                int a = carMOD.indexOf('.');//find beginning of file extention
+                carMOD = carMOD.substring(0,a);
                 carMOD = carMOD.toUpperCase();
             }
             if(reserveTWO==true)
             {
-                totalBill=cost2; totalBill*=nDays;
-                CAR = "InDaystermediate";
-                carMOD = inDaysterPic[inDaysterInDayst];
-                inDayst a = carMOD.inDaysdexOf('.');
-                carMOD = carMOD.substrinDaysg(0,a);
+                totalBill=cost2; totalBill*=n;
+                CAR = "Intermediate";
+                carMOD = interPic[interInt];
+                int a = carMOD.indexOf('.');
+                carMOD = carMOD.substring(0,a);
                 carMOD = carMOD.toUpperCase();
             }
             if(reserveTHREE==true)
             {
-                totalBill=cost3; totalBill*=nDays;
+                totalBill=cost3; totalBill*=n;
                 CAR = "Full Size";
-                carMOD = fullPic[fullsizeInDayst];
-                inDayst a = carMOD.inDaysdexOf('.');
-                carMOD = carMOD.substrinDaysg(0,a);
+                carMOD = fullPic[fullsizeInt];
+                int a = carMOD.indexOf('.');
+                carMOD = carMOD.substring(0,a);
                 carMOD = carMOD.toUpperCase();
             }
-            //set report inDays textbox
+            //set report in textbox
             txtReport.setText
             (
-                "Car Type: "+CAR+"\nDays"
-               +"Car model: "+carMOD+"\nDays"
-               +"nDayso. of Days: "+nDays+"\nDays"
-               +"Total AmounDayst: $"+(df.format(totalBill))
+                "Car Type: "+CAR+"\n"
+               +"Car model: "+carMOD+"\n"
+               +"No. of Days: "+nDays+"\n"
+               +"Total Amount: $"+(df.format(totalBill))
             );            
         }
     }    
-    public void update(Graphics gg){painDayst(gg);}    
+    public void update(Graphics gg){paint(gg);}    
 }
