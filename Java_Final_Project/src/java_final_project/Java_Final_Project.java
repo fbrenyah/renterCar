@@ -5,6 +5,7 @@
  *              Professor   Ray Ahmadnia
  *              Due Date    Friday Feb. 1, 2013
  *              Date        Thu. Jan 31,2013
+ *              Updated     Fri. July 12, 2019
  * 
  * Purpose: Allow the user to reserve/rent a given set of automobiles.
  ------------------------------------------------------------------------------------*/
@@ -27,7 +28,10 @@ public class Java_Final_Project extends Applet implements ActionListener
             reserveTWO = false,
             reserveTHREE = false;
             
-    double totalBill, cost1=29.95, cost2=39.95, cost3=59.95;;
+    double totalBill, 
+            cost1=29.95, 
+            cost2=39.95, 
+            cost3=59.95;;
     
     String CAR, carMOD;
     
@@ -214,46 +218,37 @@ public class Java_Final_Project extends Applet implements ActionListener
         if(reserveTHREE==true)
             g.drawImage(fullImg[fullsizeInt],430,370,210,110,this);
     }
-    public void actionPerformed(ActionEvent ae)
-    {
+    public void actionPerformed(ActionEvent ae) {
         //perform "Next Car" button actions
-        if(ae.getSource()==btnNext1)
-        {
+        if(ae.getSource()==btnNext1) {
             //reset temp to recycle images
             compInt++;
             compInt = compInt%6;
         }
-        if(ae.getSource()==btnNext2)
-        {
+        if(ae.getSource()==btnNext2) {
             //reset temp to recycle images
             interInt++;
             interInt = interInt%5;
         }
-        if(ae.getSource()==btnNext3)
-        {
+        if(ae.getSource()==btnNext3) {
             //reset temp to recycle images
             fullsizeInt++;
             fullsizeInt = fullsizeInt%6;
         }
         //perform "Rent Car!" button actions
-        if(ae.getSource()==btnRent1)
-        {
+        if(ae.getSource()==btnRent1) {
             reserveONE=true;
         }
-        if(ae.getSource()==btnRent2)
-        {
+        if(ae.getSource()==btnRent2) {
             reserveTWO=true;
         }
-        if(ae.getSource()==btnRent3)
-        {
+        if(ae.getSource()==btnRent3) {
             reserveTHREE=true;
         }
         //perform "Checkout!" button actions
-        if(ae.getSource()==btnReport)
-        {
+        if(ae.getSource()==btnReport) {
             nDays = daysDropBox.getSelectedIndex() + 1;
-            if(reserveONE==true)
-            {
+            if(reserveONE==true) {
                 totalBill=cost1; totalBill*=n;
                 CAR = "SubCompact";  
                 carMOD = compactPic[compInt];//get filename of current pic
@@ -261,8 +256,7 @@ public class Java_Final_Project extends Applet implements ActionListener
                 carMOD = carMOD.substring(0,a);
                 carMOD = carMOD.toUpperCase();
             }
-            if(reserveTWO==true)
-            {
+            if(reserveTWO==true) {
                 totalBill=cost2; totalBill*=n;
                 CAR = "Intermediate";
                 carMOD = interPic[interInt];
@@ -270,8 +264,7 @@ public class Java_Final_Project extends Applet implements ActionListener
                 carMOD = carMOD.substring(0,a);
                 carMOD = carMOD.toUpperCase();
             }
-            if(reserveTHREE==true)
-            {
+            if(reserveTHREE==true) {
                 totalBill=cost3; totalBill*=n;
                 CAR = "Full Size";
                 carMOD = fullPic[fullsizeInt];
@@ -280,8 +273,7 @@ public class Java_Final_Project extends Applet implements ActionListener
                 carMOD = carMOD.toUpperCase();
             }
             //set report in textbox
-            txtReport.setText
-            (
+            txtReport.setText (
                 "Car Type: "+CAR+"\n"
                +"Car model: "+carMOD+"\n"
                +"No. of Days: "+nDays+"\n"
